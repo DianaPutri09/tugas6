@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Kontak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Hubungi Kami</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Layanan</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2 style="color: #FFF2AF;">Menu Samping</h2>
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <section class="kontak" id="kontak">
+                <h2>Form Kontak WhatsApp</h2>
+                <form id="kontakForm" onsubmit="return kirimWhatsApp()">
+                    <label for="nama">Nama:</label><br>
+                    <input type="text" id="nama" name="nama" required><br><br>
+
+                    <label for="pesan">Pesan:</label><br>
+                    <textarea id="pesan" name="pesan" rows="4" required></textarea><br><br>
+
+                    <button type="submit">Kirim via WhatsApp</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Website Saya</p>
+    </footer>
+
+    <script>
+    function kirimWhatsApp() {
+        const nama = document.getElementById("nama").value.trim();
+        const pesan = document.getElementById("pesan").value.trim();
+        const noHP = "6285731699980"; 
+        if (nama === "" || pesan === "") {
+            alert("Silakan isi nama dan pesan terlebih dahulu.");
+            return false;
+        }
+        const encodedPesan = encodeURIComponent(`Halo, saya ${nama}.\n${pesan}`);
+        const url = `https://wa.me/${noHP}?text=${encodedPesan}`;
+        window.open(url, "_blank");
+
+        return false;
+    }
+    </script>
+</body>
+</html>
